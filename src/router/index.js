@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import SingleBlog from '../views/SingleBlog.vue'
+import BlogCreate from '../views/BlogCreate.vue'
+import AdminBlogList from '../views/AdminBlogList.vue'
+import AdminBlogEdit from '../views/AdminBlogEdit.vue'
 
 Vue.use(VueRouter)
 
@@ -11,12 +15,26 @@ const routes = [
     component: Home
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/admin/blog',
+    name: 'admin-blog-list',
+    component: AdminBlogList
+  },
+  {
+    path: "/admin/blog/:id/edit",
+    name: "admin-blog-edit",
+    component: AdminBlogEdit,
+    params:true
+  },
+  {
+    path:"/blog/new",
+    name: "create-new",
+    component: BlogCreate
+  },
+  {
+    path: "/blogs/:id",
+    name: "single-blog",
+    component: SingleBlog,
+    params:true
   }
 ]
 
